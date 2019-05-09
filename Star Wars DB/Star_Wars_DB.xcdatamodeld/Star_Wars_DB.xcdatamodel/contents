@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Film" representedClassName="FilmMO" syncable="YES" codeGenerationType="category">
+        <attribute name="director" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="episodeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="openingCrawl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="producer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="films" inverseEntity="Person" syncable="YES"/>
+        <relationship name="planets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Planet" inverseName="films" inverseEntity="Planet" syncable="YES"/>
+        <relationship name="species" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Species" inverseName="films" inverseEntity="Species" syncable="YES"/>
+        <relationship name="starships" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Starship" inverseName="films" inverseEntity="Starship" syncable="YES"/>
+        <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Vehicle" inverseName="films" inverseEntity="Vehicle" syncable="YES"/>
+    </entity>
+    <entity name="Person" representedClassName="PersonMO" syncable="YES" codeGenerationType="category">
+        <attribute name="birthYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eyeColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skinColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="films" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Film" inverseName="characters" inverseEntity="Film" syncable="YES"/>
+        <relationship name="homeworld" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Planet" inverseName="residents" inverseEntity="Planet" syncable="YES"/>
+        <relationship name="species" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Species" inverseName="people" inverseEntity="Species" syncable="YES"/>
+        <relationship name="starships" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Starship" inverseName="pilots" inverseEntity="Starship" syncable="YES"/>
+        <relationship name="vehicles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Vehicle" inverseName="pilots" inverseEntity="Vehicle" syncable="YES"/>
+    </entity>
+    <entity name="Planet" representedClassName="PlanetMO" syncable="YES" codeGenerationType="category">
+        <attribute name="climate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="diameter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gravity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="orbitalPeriod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="population" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rotationPeriod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surfaceWater" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="terrain" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="films" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="planets" inverseEntity="Film" syncable="YES"/>
+        <relationship name="natives" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Species" inverseName="homeworld" inverseEntity="Species" syncable="YES"/>
+        <relationship name="residents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="homeworld" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Species" representedClassName="SpeciesMO" syncable="YES" codeGenerationType="category">
+        <attribute name="averageHeight" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="averageLifespan" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="classification" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="designation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eyeColors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hairColors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="skinColors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="films" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="species" inverseEntity="Film" syncable="YES"/>
+        <relationship name="homeworld" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Planet" inverseName="natives" inverseEntity="Planet" syncable="YES"/>
+        <relationship name="people" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="species" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Starship" representedClassName="StarshipMO" syncable="YES" codeGenerationType="category">
+        <attribute name="cargoCapacity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="consumables" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costInCredits" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="crew" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hyperdriveRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxAtmospheringSpeed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mglt" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passengers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starshipClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <relationship name="films" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="starships" inverseEntity="Film" syncable="YES"/>
+        <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="starships" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Vehicle" representedClassName="VehicleMO" syncable="YES" codeGenerationType="category">
+        <attribute name="cargoCapacity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="consumables" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="costInCredits" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="crew" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="length" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="manufacturer" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxAtmospheringSpeed" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="passengers" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" syncable="YES"/>
+        <attribute name="vehicleClass" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="films" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Film" inverseName="vehicles" inverseEntity="Film" syncable="YES"/>
+        <relationship name="pilots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="vehicles" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Film" positionX="-54" positionY="-9" width="128" height="225"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="255"/>
+        <element name="Planet" positionX="18" positionY="63" width="128" height="240"/>
+        <element name="Species" positionX="0" positionY="45" width="128" height="240"/>
+        <element name="Starship" positionX="-36" positionY="9" width="128" height="285"/>
+        <element name="Vehicle" positionX="-18" positionY="27" width="128" height="255"/>
+    </elements>
+</model>
