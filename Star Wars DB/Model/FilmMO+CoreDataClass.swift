@@ -12,6 +12,15 @@ import CoreData
 
 @objc(FilmMO)
 public class FilmMO: NSManagedObject, StarWarsManagedObject {
+    public var name: String? {
+        get {
+            return title
+        }
+        set {
+            title = newValue
+        }
+    }
+
     static var filmDateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"

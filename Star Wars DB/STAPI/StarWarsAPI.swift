@@ -17,15 +17,15 @@ public class StarWarsAPI {
         return formatter
     }()
 
-    enum RootElements: String {
-        case people
+    enum RootElements: Int {
         case films
+        case people
+        case planets
+        case species
         case starships
         case vehicles
-        case species
-        case planets
     }
-
+    
     func get<T:StarWarsManagedObject>(url: URL, completionHandler:@escaping (T?)->Void) {
         if let starWarsObject = T.get(url: url) {
             completionHandler(starWarsObject as? T)

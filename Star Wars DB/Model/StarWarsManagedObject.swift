@@ -9,7 +9,9 @@
 import Foundation
 import CoreData
 
-public protocol StarWarsManagedObject:Decodable where Self:NSManagedObject { }
+public protocol StarWarsManagedObject:Decodable where Self:NSManagedObject {
+    var name: String? {get set}
+}
 
 extension StarWarsManagedObject where Self:NSManagedObject {
     static func get<T:NSManagedObject>(url: URL) -> T? {
