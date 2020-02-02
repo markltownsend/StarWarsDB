@@ -3,7 +3,7 @@ platform :ios, '12.0'
 
 target 'Star Wars DB' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+#  use_frameworks!
 
   # Pods for Star Wars DB
   pod 'ReachabilitySwift'

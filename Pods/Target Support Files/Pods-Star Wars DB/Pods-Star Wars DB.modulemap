@@ -1,4 +1,4 @@
-framework module Pods_Star_Wars_DB {
+module Pods_Star_Wars_DB {
   umbrella header "Pods-Star Wars DB-umbrella.h"
 
   export *
